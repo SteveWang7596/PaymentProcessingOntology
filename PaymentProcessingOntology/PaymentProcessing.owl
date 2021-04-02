@@ -90,6 +90,7 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#getsAuthenticationFrom -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#getsAuthenticationFrom">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:comment>Only transitive for one transaction (not globally)</rdfs:comment>
     </owl:ObjectProperty>
     
@@ -145,6 +146,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#receives -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#receives">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#requestsAuthenticationFor -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#requestsAuthenticationFor">
@@ -155,7 +164,9 @@
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
     
 
 
@@ -178,19 +189,58 @@
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#declines"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#BankServ -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#BankServ"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#BankServ">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#getsAuthenticationFrom"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Consumer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Card -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Card"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Card">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#paysFor"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -223,13 +273,44 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#owns"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Card"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#declines"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -248,7 +329,14 @@
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#OnlinePurchasingPlatform -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#OnlinePurchasingPlatform"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#OnlinePurchasingPlatform">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#integrates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#eCommercePaymentGateway"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
@@ -262,13 +350,58 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#POS">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+                            <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Switch"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#captures"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#CardDetails"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PhysicalTransaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#VirtualTransaction"/>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#eCommercePaymentGateway"/>
     </owl:Class>
     
 
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#POS"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#eCommercePaymentGateway"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
     
 
 
@@ -284,6 +417,24 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Switch -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Switch">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#receives"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#routesTo"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>Also called a transaction network. Sometimes TPPP (?)</rdfs:comment>
     </owl:Class>
     
@@ -309,6 +460,14 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PhysicalTransaction"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#VirtualTransaction"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <owl:disjointUnionOf rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PhysicalTransaction"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#VirtualTransaction"/>
@@ -329,6 +488,34 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#eCommercePaymentGateway">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#getsAuthenticationFrom"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#BankServ"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#VirtualTransaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#captures"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#CardDetails"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#sends"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PhysicalTransaction"/>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment>sometimes part of TPPP</rdfs:comment>
     </owl:Class>
 </rdf:RDF>

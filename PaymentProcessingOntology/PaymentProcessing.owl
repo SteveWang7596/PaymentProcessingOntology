@@ -33,8 +33,6 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByAcquirer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByAcquirer">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
         <rdfs:comment>complex chain could be: authorisedByAcquirer o authorisedByIssuer ⊑ authorisedByThirdPartyAcquirer</rdfs:comment>
     </owl:ObjectProperty>
@@ -44,8 +42,6 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByIssuer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByIssuer">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer"/>
     </owl:ObjectProperty>
     
@@ -54,8 +50,6 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByThirdPartyAcquirer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByThirdPartyAcquirer">
-        <owl:inverseOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByAcquirer"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorisedByIssuer"/>
@@ -66,7 +60,9 @@
 
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+    </owl:ObjectProperty>
     
 
 
@@ -221,6 +217,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#initiates"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#owns"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Card"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>

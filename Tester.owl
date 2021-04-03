@@ -5,7 +5,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-9="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9"/>
     
 
@@ -79,12 +80,6 @@
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#RoutedTo"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -99,6 +94,51 @@
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Clicks -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Clicks">
+        <rdf:type rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Nedbank -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Nedbank">
+        <rdf:type rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch"/>
+        <RoutedTo rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa"/>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 

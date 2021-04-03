@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#"
-     xml:base="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9"
+<rdf:RDF xmlns="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#"
+     xml:base="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:untitled-ontology-9="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9"/>
+     xmlns:untitled-ontology-10="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10"/>
     
 
 
@@ -22,11 +22,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#RoutedTo -->
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#AgreesWith -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#RoutedTo">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#AgreesWith">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
     </owl:ObjectProperty>
     
 
@@ -42,58 +41,22 @@
     
 
 
-    <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer -->
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Aquirer -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Institution"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#RoutedTo"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Institution -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Institution"/>
-    
-
-
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Institution"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#RoutedTo"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch">
+    <owl:Class rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Aquirer">
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#RoutedTo"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#AgreesWith"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Issuers"/>
             </owl:Restriction>
         </owl:equivalentClass>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Issuers -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Issuers"/>
     
 
 
@@ -108,37 +71,26 @@
     
 
 
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Clicks -->
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#ABSA -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Clicks">
-        <rdf:type rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#ABSA">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Aquirer"/>
+        <AgreesWith rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Nedbank -->
+    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Visa -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Nedbank">
-        <rdf:type rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Acquirer"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Visa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#Issuers"/>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa">
-        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Issuer"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch1 -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch1">
-        <rdf:type rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#switch"/>
-        <RoutedTo rdf:resource="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-9#Visa"/>
 </rdf:RDF>
 
 

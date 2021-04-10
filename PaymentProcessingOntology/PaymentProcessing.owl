@@ -281,6 +281,33 @@
     
 
 
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#AutomatedPCHSystem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#AutomatedPCHSystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#getsAuthenticationFrom"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Consumer"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#routesTo"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#eCommercePaymentGateway"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment>PCH: Payment Clearing House</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Card -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Card">
@@ -651,33 +678,6 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#automatedPCHSystem -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#automatedPCHSystem">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#getsAuthenticationFrom"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Consumer"/>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty>
-                            <rdf:Description>
-                                <owl:inverseOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#routesTo"/>
-                            </rdf:Description>
-                        </owl:onProperty>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#eCommercePaymentGateway"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:comment>PCH: Payment Clearing House</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#eCommercePaymentGateway -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#eCommercePaymentGateway">
@@ -698,7 +698,7 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#getsAuthenticationFrom"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#automatedPCHSystem"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#AutomatedPCHSystem"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>

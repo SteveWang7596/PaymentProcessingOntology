@@ -206,6 +206,7 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Institution"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
@@ -268,6 +269,7 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Institution"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#getsAuthenticationFrom"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Consumer"/>
@@ -339,12 +341,25 @@
     
 
 
+    <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Device -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Device"/>
+    
+
+
+    <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Institution -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Institution"/>
+    
+
+
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Issuer">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Institution"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#authorises"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Transaction"/>
@@ -426,6 +441,7 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Device"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#getsAuthenticationFrom"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Consumer"/>
@@ -451,6 +467,7 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Device"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#captures"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#CardDetails"/>
@@ -525,6 +542,7 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Switch -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Switch">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Device"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#hasConnectionTo"/>
@@ -557,6 +575,17 @@
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#System -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#System">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#integrates"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#PaymentSystem"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:comment>just a suggestion, then we can have System ⊑ E.integratesTo.System or something.
 under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     </owl:Class>
@@ -566,6 +595,12 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     <!-- http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#TPPP -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#TPPP">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#owns"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Switch"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:comment>TPPP: Third Party Payment Processor</rdfs:comment>
     </owl:Class>
     

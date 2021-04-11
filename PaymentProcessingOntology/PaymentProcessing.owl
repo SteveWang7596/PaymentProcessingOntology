@@ -26,7 +26,7 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authenticates">
         <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#CardDetails"/>
-        <rdfs:comment>What do they BankServ and customer authenticate? The card details.</rdfs:comment>
+        <rdfs:comment>What do the BankServ and Consumer authenticate? The card details.</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -65,7 +65,12 @@
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorises -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorises">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#routesTo"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorises"/>
+        </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     
 
@@ -82,6 +87,7 @@
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#declines -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#declines">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction"/>
     </owl:ObjectProperty>
     
@@ -115,7 +121,14 @@
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#hasPaymentProcessor">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Switch"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Switch"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#TPPP"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -179,6 +192,7 @@
 
 
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#requestsAuthenticationFor -->
+
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#requestsAuthenticationFor">
         <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction"/>
     </owl:ObjectProperty>
@@ -353,12 +367,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#owns"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Card"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#owns"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/eekok0987/ontologies/2021/2/untitled-ontology-6#Card"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -748,7 +756,6 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/stevew/ontologies/2021/3/untitled-ontology-10#ABSA">
         <payment-processing:authorisedByIssuer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
-        <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction-1"/>
         <payment-processing:hasConnectionTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
         <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
     </owl:NamedIndividual>

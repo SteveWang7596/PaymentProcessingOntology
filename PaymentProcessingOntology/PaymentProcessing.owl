@@ -11,12 +11,6 @@
     <owl:Ontology rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing">
         <ontodebug:testCase>
             <rdf:Description>
-                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nikki initiates PT-1</ontodebug:axiom>
-                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
-            </rdf:Description>
-        </ontodebug:testCase>
-        <ontodebug:testCase>
-            <rdf:Description>
                 <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisaCard-N1 paysFor PT-2</ontodebug:axiom>
                 <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
             </rdf:Description>
@@ -24,6 +18,24 @@
         <ontodebug:testCase>
             <rdf:Description>
                 <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visa issues VisaCard-N1</ontodebug:axiom>
+                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+            </rdf:Description>
+        </ontodebug:testCase>
+        <ontodebug:testCase>
+            <rdf:Description>
+                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nikki owns VisaCard-N1</ontodebug:axiom>
+                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+            </rdf:Description>
+        </ontodebug:testCase>
+        <ontodebug:testCase>
+            <rdf:Description>
+                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PayGate authorisedByThirdPartyAcquirer FNB</ontodebug:axiom>
+                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+            </rdf:Description>
+        </ontodebug:testCase>
+        <ontodebug:testCase>
+            <rdf:Description>
+                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PayGate Type Acquirer</ontodebug:axiom>
                 <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
             </rdf:Description>
         </ontodebug:testCase>
@@ -963,6 +975,7 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB">
         <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
     </owl:NamedIndividual>
     
 
@@ -1112,8 +1125,10 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Acquirer"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
         <payment-processing:authorisedByIssuer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
+        <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
         <payment-processing:compliesWith rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PCI-DSS"/>
         <payment-processing:owns rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate-Switch"/>
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
         <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
         <rdfs:comment>A hybrid TPPP/Acquirer that owns a Switch</rdfs:comment>
     </owl:NamedIndividual>
@@ -1187,10 +1202,12 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa">
+        <payment-processing:authorisedByAcquirer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB"/>
         <payment-processing:authorisedByAcquirer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Nedbank"/>
-        <payment-processing:authorisedByThirdPartyAcquirer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB"/>
+        <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
         <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction-1"/>
         <payment-processing:issues rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1"/>
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB"/>
         <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
     </owl:NamedIndividual>
     
@@ -1241,15 +1258,23 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
         <payment-processing:isPartOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1"/>
     </owl:NamedIndividual>
     <rdf:Description>
-        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nikki initiates PT-1</ontodebug:axiom>
-        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
-    </rdf:Description>
-    <rdf:Description>
         <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisaCard-N1 paysFor PT-2</ontodebug:axiom>
         <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
     </rdf:Description>
     <rdf:Description>
         <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visa issues VisaCard-N1</ontodebug:axiom>
+        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+    </rdf:Description>
+    <rdf:Description>
+        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nikki owns VisaCard-N1</ontodebug:axiom>
+        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+    </rdf:Description>
+    <rdf:Description>
+        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PayGate authorisedByThirdPartyAcquirer FNB</ontodebug:axiom>
+        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+    </rdf:Description>
+    <rdf:Description>
+        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PayGate Type Acquirer</ontodebug:axiom>
         <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
     </rdf:Description>
 </rdf:RDF>

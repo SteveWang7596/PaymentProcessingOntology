@@ -6,8 +6,61 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ontodebug="http://ainf.aau.at/ontodebug#"
      xmlns:payment-processing="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing"/>
+    <owl:Ontology rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing">
+        <ontodebug:testCase>
+            <rdf:Description>
+                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nikki initiates PT-1</ontodebug:axiom>
+                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+            </rdf:Description>
+        </ontodebug:testCase>
+        <ontodebug:testCase>
+            <rdf:Description>
+                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisaCard-N1 paysFor PT-2</ontodebug:axiom>
+                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+            </rdf:Description>
+        </ontodebug:testCase>
+        <ontodebug:testCase>
+            <rdf:Description>
+                <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visa issues VisaCard-N1</ontodebug:axiom>
+                <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+            </rdf:Description>
+        </ontodebug:testCase>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ainf.aau.at/ontodebug#axiom -->
+
+    <owl:AnnotationProperty rdf:about="http://ainf.aau.at/ontodebug#axiom">
+        <rdfs:subPropertyOf rdf:resource="http://ainf.aau.at/ontodebug#testCase"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://ainf.aau.at/ontodebug#testCase -->
+
+    <owl:AnnotationProperty rdf:about="http://ainf.aau.at/ontodebug#testCase"/>
+    
+
+
+    <!-- http://ainf.aau.at/ontodebug#type -->
+
+    <owl:AnnotationProperty rdf:about="http://ainf.aau.at/ontodebug#type">
+        <rdfs:subPropertyOf rdf:resource="http://ainf.aau.at/ontodebug#testCase"/>
+    </owl:AnnotationProperty>
     
 
 
@@ -56,7 +109,6 @@
         </rdfs:domain>
         <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Acquirer"/>
         <rdfs:comment>For all the authorisedBy[...] properties, the domain and range are both institutions (acquirer/issuer), not transactions.</rdfs:comment>
-        <rdfs:comment>complex chain could be: authorisedByAcquirer o authorisedByIssuer ⊑ authorisedByThirdPartyAcquirer</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -64,20 +116,7 @@
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorisedByIssuer -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorisedByIssuer">
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Switch"/>
-                    <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#TPPP"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:complementOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Issuer"/>
-            </owl:Class>
-        </rdfs:domain>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Issuer"/>
     </owl:ObjectProperty>
     
@@ -153,6 +192,18 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#hasConnectionTo">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorisedByAcquirer"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorisedByIssuer"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#authorisedByThirdPartyAcquirer"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#routesTo"/>
+        </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     
 
@@ -381,6 +432,17 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#paysFor"/>
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty>
+                    <rdf:Description>
+                        <owl:inverseOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#issues"/>
+                    </rdf:Description>
+                </owl:onProperty>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Issuer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -687,7 +749,7 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>Also called a transaction network. Sometimes TPPP (?)</rdfs:comment>
+        <rdfs:comment>Also called a transaction network. Sometimes owned by TPPP.</rdfs:comment>
     </owl:Class>
     
 
@@ -865,7 +927,17 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Clicks -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Clicks"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Clicks">
+        <payment-processing:issues rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#ClicksClubcard-J1"/>
+        <payment-processing:owns rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-3"/>
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#ClicksClubcard-J1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#ClicksClubcard-J1"/>
     
 
 
@@ -887,10 +959,27 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     
 
 
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB">
+        <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Issuer-1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Issuer-1">
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Issuer"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Josh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Josh">
+        <payment-processing:owns rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#ClicksClubcard-J1"/>
+        <payment-processing:paysFor rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
     </owl:NamedIndividual>
     
 
@@ -906,6 +995,15 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Nedbank -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Nedbank"/>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Nikki -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Nikki">
+        <payment-processing:initiates rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
+        <payment-processing:owns rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1"/>
+    </owl:NamedIndividual>
     
 
 
@@ -929,8 +1027,10 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-1">
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED"/>
+        <payment-processing:captures rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa-N1-details"/>
         <payment-processing:compliesWith rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PCI-DSS"/>
         <payment-processing:getsAuthenticationFrom rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Consumer-1"/>
+        <payment-processing:verifiesPIN rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#0756"/>
     </owl:NamedIndividual>
     
 
@@ -939,6 +1039,16 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-2">
         <payment-processing:verifiesPIN rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PIN-1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-3">
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate-Switch"/>
+        <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
+        <payment-processing:verifiesPIN rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#chip-JCC-1"/>
     </owl:NamedIndividual>
     
 
@@ -956,7 +1066,9 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#POS-1">
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#POS"/>
         <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-1"/>
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PED-3"/>
         <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-1"/>
+        <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
     </owl:NamedIndividual>
     
 
@@ -972,7 +1084,17 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-1 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-1"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-1">
+        <rdfs:comment>Physical Transaction</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2">
+        <rdfs:comment>Physical Transaction</rdfs:comment>
+    </owl:NamedIndividual>
     
 
 
@@ -980,6 +1102,31 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayFast">
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#eCommercePaymentGateway"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate">
+        <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Acquirer"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Institution"/>
+        <payment-processing:authorisedByIssuer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa"/>
+        <payment-processing:compliesWith rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PCI-DSS"/>
+        <payment-processing:owns rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate-Switch"/>
+        <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
+        <rdfs:comment>A hybrid TPPP/Acquirer that owns a Switch</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate-Switch -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate-Switch">
+        <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Switch"/>
+        <payment-processing:compliesWith rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PCI-DSS"/>
+        <payment-processing:routesTo rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PayGate"/>
+        <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
     </owl:NamedIndividual>
     
 
@@ -1041,7 +1188,24 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa">
         <payment-processing:authorisedByAcquirer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Nedbank"/>
+        <payment-processing:authorisedByThirdPartyAcquirer rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#FNB"/>
         <payment-processing:authorises rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Transaction-1"/>
+        <payment-processing:issues rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1"/>
+        <payment-processing:sends rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa-N1-details -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#Visa-N1-details"/>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1">
+        <payment-processing:paysFor rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PT-2"/>
     </owl:NamedIndividual>
     
 
@@ -1054,11 +1218,40 @@ under this could be OnlinePlatform, PaymentSystem.</rdfs:comment>
     
 
 
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#chip-JCC-1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#chip-JCC-1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#PIN"/>
+        <payment-processing:isPartOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#ClicksClubcard-J1"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#e-Commerce-PG-1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#e-Commerce-PG-1">
         <rdf:type rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#eCommercePaymentGateway"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#0756 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#0756">
+        <payment-processing:isPartOf rdf:resource="http://www.semanticweb.org/uct-emrchi001-wngshu003/ontologies/2021/2/payment-processing#VisaCard-N1"/>
+    </owl:NamedIndividual>
+    <rdf:Description>
+        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nikki initiates PT-1</ontodebug:axiom>
+        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+    </rdf:Description>
+    <rdf:Description>
+        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">VisaCard-N1 paysFor PT-2</ontodebug:axiom>
+        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+    </rdf:Description>
+    <rdf:Description>
+        <ontodebug:axiom rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Visa issues VisaCard-N1</ontodebug:axiom>
+        <ontodebug:type rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</ontodebug:type>
+    </rdf:Description>
 </rdf:RDF>
 
 
